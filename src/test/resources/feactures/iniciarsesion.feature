@@ -9,8 +9,6 @@ Característica: Inicio de sesión en la página de OrangeHRM
   @successful
   Escenario: Iniciar sesión con credenciales válidas
     Dado Que el usuario está en la página de inicio de sesión de OrangeHRM
-    Cuando el usuario ingresa el nombre de usuario "admin"
-    Y el usuario ingresa la contraseña "admin123"
-    Y hace clic en el botón de inicio de sesión
+    Cuando el usuario ingresa las credenciales
     Entonces el usuario debería ser redirigido a la página de inicio del dashboard
 

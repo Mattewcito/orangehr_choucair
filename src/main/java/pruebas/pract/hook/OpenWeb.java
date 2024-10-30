@@ -5,22 +5,30 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Open;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.util.EnvironmentVariables;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static pruebas.pract.utils.Constants.WEB_URL;
 
-public class IniciarSesion implements Task {
+public class OpenWeb implements Task {
 
     private EnvironmentVariables environmentVariables;
 
+    public OpenWeb(String webUrl) {
+        this.webUrl = webUrl;
+    }
+
+    private String webUrl;
+
     @Override
-    public <T extends Actor> void performAs(T actor) {
+    @Step("{0} abre el navegador web")
+     public <T extends Actor> void performAs(T actor) {
         String pathWebUrl = EnvironmentSpecificConfiguration.from(environmentVariables).getProperty(WEB_URL);
         actor.attemptsTo(Open.url(pathWebUrl));
     }
 
-    public static Performable browserURL() {
-        return instrumented(IniciarSesion.class);
+    public static Performable browserURL(String webUrl) {
+        return instrumented(OpenWeb.class, webUrl);
     }
 }

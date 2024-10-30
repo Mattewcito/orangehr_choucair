@@ -23,7 +23,7 @@ public class IniciarSesion implements Task {
     private String pwd;
 
     @Override
-    @Step("{0} se autentica y acepta la alert del mensaje")
+    @Step("Se identifica el login y se envian las credenciales")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 WaitUntil.the(MODAL_LOGIN, isVisible())
@@ -31,10 +31,9 @@ public class IniciarSesion implements Task {
                 Click.on(MODAL_LOGIN),
                 Enter.theValue(user).into(INPUT_USER_NAME),
                 Enter.theValue(pwd).into(INPUT_PASSWORD),
-                Click.on(BUTTON_LOGIN)
+                Click.on(BUTTON_LOGIN),
+                WaitUntil.the(DASHBOARD, isVisible())
         );
-
-
     }
 
     public static IniciarSesion authentication(String user, String pwd) {

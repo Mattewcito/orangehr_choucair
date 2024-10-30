@@ -21,5 +21,8 @@ public class IniciarSesionUI extends PageObject {
 
     public static final Target BUTTON_LOGIN = Target.the("pulsa el boton entrar")
             .located(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']"));
+    public static final Target DASHBOARD = Target.the("Identifica el dashboard")
+            .located(By.xpath("//span[@class='oxd-topbar-header-breadcrumb']"));
+
 
 }

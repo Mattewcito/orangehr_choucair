@@ -8,7 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = "src/test/resources/feactures/iniciarsesion.feature",
         glue = "pruebas.pract.stepdefinition",
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = "@successful")
+        plugin = "pretty",
+        tags = "@authenticationLogin")
 
 public class RunnerIniciarSesion {
 }
